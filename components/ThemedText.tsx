@@ -1,4 +1,8 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Text, View } from 'react-native';
 import { Text, type TextProps, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 
