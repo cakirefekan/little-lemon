@@ -1,11 +1,11 @@
 import OnboardingScreen from "../screens/Onboarding"
 import ProfileScreen from "../screens/Profile"
 import SplashScreen from "../screens/Splash"
+import HomeScreen from "../screens/Home"
 import { AuthContext } from "./ContextProviders";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-
 import { useRef, useState, useEffect, useContext } from 'react';
 
 const Stack = createNativeStackNavigator();
@@ -18,15 +18,15 @@ function NavigationManager() {
         async function DataLoader() {
             try {
                 const result = await AsyncStorage.getItem("loggedIn")
-                if ( result !== null) {
+                if (result !== null) {
                     const data = await JSON.parse(result);
-    
+
                     if (data.loggedIn) {
                         setIsLoggedIn(true)
                     }
                     else {
                         setIsLoggedIn(false)
-    
+
                     }
                 }
                 else {
@@ -35,7 +35,7 @@ function NavigationManager() {
                             loggedIn: false
                         }))
                 }
-    
+
             } catch (error) {
                 console.log(error)
             }
@@ -56,11 +56,13 @@ function NavigationManager() {
             <NavigationContainer>
                 <Stack.Navigator>
                     {isLoggedIn ? (
-                        // Onboarding completed, user is signed in
-                        <Stack.Screen options={{headerShown:false}} name="Profile" component={ProfileScreen} />
+                        <>
+                            <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+                            <Stack.Screen options={{ headerShown: false }} name="Profile" component={ProfileScreen} />
+                        </>
                     ) : (
                         // User is NOT signed in
-                        <Stack.Screen options={{headerShown:false}} name="Onboarding" component={OnboardingScreen} />
+                        <Stack.Screen options={{ headerShown: false }} name="Onboarding" component={OnboardingScreen} />
                     )}
                 </Stack.Navigator>
             </NavigationContainer>

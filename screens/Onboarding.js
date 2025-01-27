@@ -8,6 +8,13 @@ import LemonButton from "../components/LemonButton"
 import LemonInput from "../components/LemonInput"
 import LemonCheckBox from "../components/LemonCheckBox"// Prevent the splash screen from auto-hiding before asset loading is complete.
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+    useFonts,
+    MarkaziText_400Regular,
+    MarkaziText_500Medium,
+    MarkaziText_600SemiBold,
+    MarkaziText_700Bold,
+  } from '@expo-google-fonts/markazi-text';
 export default function Onboarding() {
     const [firstName, setFirstName] = useState('');
     const [email, setEmail] = useState('');
@@ -21,21 +28,22 @@ export default function Onboarding() {
             flexDirection: "column"
         }
     })
+    
     return (
         <View style={styles.container}>
             <View style={{ flexShrink: 2, marginVertical: 40, justifyContent: "center", alignItems: "center" }}>
                 <Image style={{ justifyContent: "center", alignItems: "center" }} source={require("../assets/images/LittleLemonLogo.png")}></Image>
             </View>
-            <View style={{ paddingHorizontal:40, backgroundColor: "#495E57", flex: 1, flexDirection: "column", justifyContent: "space-evenly", alignItems: "stretch", }}>
-                    <Text style={{ color: "white" }}>Let us get to know you</Text>
-        
-                    <View>
-                        <LemonInput colorScheme="dark" header="First Name" autoComplete="given-name" dataRef={[""]} onChangeText={setFirstName} value={firstName} inputMode="text" keyboardType='default' placeholder='...' />
-                    </View>
-                    <View>
-                        <LemonInput colorScheme="dark" header="Email" autoComplete="email" dataRef={[""]} onChangeText={setEmail} inputMode="email" keyboardType="" placeholder='...' value={email} />
-                    </View>
+            <View style={{ paddingHorizontal: 40, backgroundColor: "#495E57", flex: 1, flexDirection: "column", justifyContent: "space-evenly", alignItems: "stretch", }}>
+                <Text style={{ color: "white" }}>Let us get to know you</Text>
+
+                <View>
+                    <LemonInput colorScheme="dark" header="First Name" autoComplete="given-name" dataRef={[""]} onChangeText={setFirstName} value={firstName} inputMode="text" keyboardType='default' placeholder='...' />
                 </View>
+                <View>
+                    <LemonInput colorScheme="dark" header="Email" autoComplete="email" dataRef={[""]} onChangeText={setEmail} inputMode="email" keyboardType="" placeholder='...' value={email} />
+                </View>
+            </View>
             <View style={{}}>
 
                 <LemonButton onPress={async () => {

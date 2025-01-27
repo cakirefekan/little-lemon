@@ -22,12 +22,12 @@ function LemonCheckbox({ dataRef, label }) {
         })
     }
     return (
-        <View style={{ marginVertical: 5 }}>
+        <View style={{ marginVertical: 0 }}>
             <Pressable onPress={() => pressHandle()} style={{ flexDirection: "row", alignItems: "center" }}>
                 <View style={{ borderWidth: StyleSheet.hairlineWidth, borderRadius: 8, height: 20, width: 20, marginRight: 10, justifyContent: "center", alignItems: "center", padding: 5, backgroundColor: color }}>
                     <Text></Text>
                 </View>
-                <Text>{label}</Text>
+                <Text style={{color: "#495E57", marginVertical:10, fontFamily:  "Karla_400Regular", fontSize: 16, fontWeight:400, }}>{label}</Text>
             </Pressable>
         </View>
     );

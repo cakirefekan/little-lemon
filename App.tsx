@@ -10,7 +10,7 @@ function App() {
     <SafeAreaView style={{ flex: 1 }}>
       <AuthContextProvider>
         <SavedDataContextProvider>
-          <KeyboardAvoidingView keyboardVerticalOffset={-150} behavior={Platform.OS === 'ios' ? 'position' : 'position'} contentContainerStyle={{ backgroundColor: "white", flexDirection: "column", flex: 1 }} style={{ backgroundColor: "white", flexDirection: "column", flex: 1 }} >
+          <KeyboardAvoidingView keyboardVerticalOffset={-150} behavior={Platform.OS === 'ios' ? 'position' : 'position'} contentContainerStyle={{ backgroundColor: "#fffffff", flexDirection: "column", flex: 1 }} style={{ backgroundColor: "white", flexDirection: "column", flex: 1 }} >
             <TouchableWithoutFeedback>
               <NavigationManager />
 

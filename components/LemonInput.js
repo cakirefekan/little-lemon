@@ -64,14 +64,15 @@ const LemonInput = ({ colorScheme, header, dataRef, value, ...props }) => {
             padding: 12,
             borderRadius: 8,
             borderWidth: StyleSheet.hairlineWidth,
-            backgroundColor: "white"
+            backgroundColor: "white",
+            color: "#495E57", marginVertical: 0, fontFamily: "Karla_400Regular", fontSize: 16, fontWeight: 400,
 
         },
-        darkText: {marginTop: 10, color: "white" },
-        lightText: {marginTop: 10, color: "black" }
+        darkText: { marginTop: 10, color: "#ffffff", fontFamily: "Karla_700Bold", fontSize: 18, fontWeight: 700, },
+        lightText: { marginTop: 10, color: "#495E57", fontFamily: "Karla_700Bold", fontSize: 18, fontWeight: 700, }
     })
     return (<>
-        <Text style={styles[colorScheme+"Text"]}>{header}</Text>
+        <Text style={styles[colorScheme + "Text"]}>{header}</Text>
         {mask != false ?
             <MaskedTextInput
                 mask={mask}

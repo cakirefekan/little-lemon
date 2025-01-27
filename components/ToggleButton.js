@@ -1,5 +1,5 @@
 import { Pressable, Text, StyleSheet } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useState } from "react";
 import {
     useFonts as useFontsKarla,
     Karla_200ExtraLight,
@@ -17,18 +17,23 @@ import {
     Karla_700Bold_Italic,
     Karla_800ExtraBold_Italic,
   } from '@expo-google-fonts/karla';
-function LemonButton({ type, children, ...props}) {
+function LemonButton({ onPress, type, children, ...props}) {
 
+    const [isActive, setIsActive] = useState(false)
 
+    function pressHandle(){
+        setIsActive(!isActive)
+    }
     return (
-        <Pressable style={({ pressed }) => (pressed) ? styles[type + "Active"] : styles[type]}  {...props} >
-            {({ pressed }) =>
-            pressed ?
+        <Pressable onPress={()=>{pressHandle();onPress()}}  style={ (isActive) ? styles[type + "Active"] : styles[type]}  {...props} >
+            {
+            isActive == true ?
                 <Text style={styles[type + "TextActive"]}>{children}</Text>
                 :
                 <Text style={styles[type + "Text"]}>{children}</Text>
 
             }
+            
         </Pressable>
 
     );
@@ -41,7 +46,7 @@ function LemonButton({ type, children, ...props}) {
             paddingHorizontal: 12,
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: 8,
+            borderRadius: 16,
             backgroundColor: "#495E57",
 
         },
@@ -51,20 +56,16 @@ function LemonButton({ type, children, ...props}) {
             paddingHorizontal: 12,
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: 8,
-            backgroundColor: "#F4CE14",
+            borderRadius: 16,
+            backgroundColor: "#EDEFEE",
 
         },
         defaultText: {
             color: "#EDEFEE",
-            fontSize: 16,
-            fontWeight: 800,
             fontFamily: "Karla_800ExtraBold"
         },
         defaultTextActive: {
-            color: "#495E57",
-            fontSize: 16,
-            fontWeight: 800,
+            color: "#333333",
             fontFamily: "Karla_800ExtraBold"
         },
         primary: {
@@ -73,8 +74,8 @@ function LemonButton({ type, children, ...props}) {
             paddingHorizontal: 12,
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: 8,
-            backgroundColor: "#F4CE14",
+            borderRadius: 16,
+            backgroundColor: "#EDEFEE",
 
         },
         primaryActive: {
@@ -83,7 +84,7 @@ function LemonButton({ type, children, ...props}) {
             paddingHorizontal: 12,
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: 8,
+            borderRadius: 16,
             backgroundColor: "#495E57",
 
         },

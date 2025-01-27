@@ -8,8 +8,11 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { SavedDataContext } from "@/components/SavedDataContextProvider";
 import { AuthContext } from "../components/ContextProviders";
 import { validateEmail, validateName, pickImage } from "../constants/functions"
+import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/Ionicons"
 
 function ProfileDetails() {
+    const navigation = useNavigation()
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
     const { savedData, setSavedData } = useContext(SavedDataContext);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -67,7 +70,9 @@ function ProfileDetails() {
     return (
         <>
             <View style={styles.header}>
-                <Pressable style={{ flex: 1, justifyContent: "center", alignItems: "center" }}><Text>Back</Text></Pressable>
+                <Pressable onPress={() => { navigation.goBack(); resetData() }} style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                    <Icon style={styles.searchIcon} name="chevron-back" size={20} color="#000" />
+                </Pressable>
                 <View style={{
                     flex: 5,
                     padding: 5,
@@ -221,6 +226,7 @@ const styles = StyleSheet.create({
         maxHeight: 60,
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "#fff"
 
     },
     profileDetails: {
@@ -232,6 +238,8 @@ const styles = StyleSheet.create({
         margin: 8,
         padding: 12,
         flexDirection: "column",
+        backgroundColor: "#fff"
+
 
     }
 })
